@@ -25,6 +25,7 @@ pipeline {
       }
       stage ('build'){
         steps {
+            sh 'docker build -t myapprod --target=prod .'
             sh 'docker build -t myappdev --target=dev .'
         }
       }
