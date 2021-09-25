@@ -1,19 +1,31 @@
-
+@Library("shared-library") _
 pipeline {
   environment {
     PATH = "$PATH:/usr/local/bin/"
   }
   agent any 
+  tools {
+    maven 'maven'
+  }
     stages {
       stage ('checkout'){
         steps {
           git branch: 'master', url: 'https://github.com/mamtapandey1910/maven-project.git'
         }
       }
+      stage ('sonar-scanner'){
+        steps {
+          sonarScan()
+        }
+      }
+      stage ('Quality Gate'){
+        steps {
+          qualityGate()
+        }
+      }
       stage ('build'){
         steps {
-          sh 'docker build -t myapprod:${BUILD_NUMBER} --target=prod .'
-            sh 'docker build -t myappdev:${BUILD_NUMBER} --target=dev .'
+            sh 'docker build -t myappdev --target=dev .'
         }
       }
       stage ('deploy'){
