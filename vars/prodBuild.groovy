@@ -1,3 +1,3 @@
 def call(){
-    waitForQualityGate abortPipeline: true
+    sh 'docker build -t myapprod --target=prod .'
 }
