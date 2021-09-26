@@ -10,7 +10,7 @@ pipeline {
     stages {
       stage ('checkout'){
         steps {
-          git branch: 'master', url: 'https://github.com/sivaramanshira/maven-project.git'
+          git branch: 'dev', url: 'https://github.com/sivaramanshira/maven-project.git'
         }
       }
       stage ('sonar-scanner'){
@@ -37,17 +37,6 @@ pipeline {
       stage ('Deployment Dev'){
         steps {
            deployDevApp()
-        }
-      }
-      
-        stage ('pull prod from artifactory'){
-        steps {
-           pullProdImage()
-        }
-      }
-      stage ('Deployment Prod'){
-        steps {
-           deployProdApp()
         }
       }
       
