@@ -29,6 +29,11 @@ pipeline {
            pushImage()
         }
       }
+        stage ('pull from artifactory'){
+        steps {
+           deployApp()
+        }
+      }
       
     }
   }
