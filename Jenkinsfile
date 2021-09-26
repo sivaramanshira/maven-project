@@ -10,7 +10,7 @@ pipeline {
     stages {
       stage ('checkout'){
         steps {
-          git branch: 'master', url: 'https://github.com/mamtapandey1910/maven-project.git'
+          git branch: 'master', url: 'https://github.com/sivaramanshira/maven-project.git'
         }
       }
       stage ('sonar-scanner'){
