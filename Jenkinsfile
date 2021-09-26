@@ -24,18 +24,9 @@ pipeline {
             devBuild()
         }
       }
-      stage ('deploy'){
+      stage ('push to artifactory'){
         steps {
-           sh 'currentbuild=${BUILD_NUMBER};docker run -it -d -p 9090:8080 -h myhost1 mynodeapprod:$((currentbuild - 1))'
-           sh 'currentbuild=${BUILD_NUMBER};docker run -it -d -p 9091:8080 -h myhost2 mynodeappdev:$((currentbuild - 1))'
-        }
-      }
-      stage ('validate'){
-        steps {
-          sh 'sleep 30'
-          sh 'curl http://20.85.216.204:5000/note/'
-          sh 'curl http://20.85.216.204:5001/note/'
-          sh 'echo "url respondin"'
+           pushImage()
         }
       }
       
