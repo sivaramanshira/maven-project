@@ -29,14 +29,25 @@ pipeline {
            pushImage()
         }
       }
-        stage ('pull from artifactory'){
+        stage ('pull dev from artifactory'){
         steps {
-           pullImage()
+           pullDevImage()
         }
       }
-      stage ('Deployment'){
+      stage ('Deployment Dev'){
         steps {
-           deployApp()
+           deployDevApp()
+        }
+      }
+      
+        stage ('pull prod from artifactory'){
+        steps {
+           pullProdImage()
+        }
+      }
+      stage ('Deployment Prod'){
+        steps {
+           deployProdApp()
         }
       }
       
