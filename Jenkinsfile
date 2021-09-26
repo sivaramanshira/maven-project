@@ -38,8 +38,8 @@ pipeline {
       stage ('validate'){
         steps {
           sh 'sleep 30'
-          sh 'curl http://3.215.178.154:5000/note/'
-          sh 'curl http://3.215.178.154:5001/note/'
+          sh 'curl http://20.85.216.204:5000/note/'
+          sh 'curl http://20.85.216.204:5001/note/'
           sh 'echo "url respondin"'
         }
       }
