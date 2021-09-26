@@ -1,3 +1,3 @@
 def call(){
-    waitForQualityGate abortPipeline: false
+    waitForQualityGate abortPipeline: true
 }
