@@ -18,11 +18,6 @@ pipeline {
           sonarScan()
         }
       }
-      stage ('Quality Gate'){
-        steps {
-          qualityGate()
-        }
-      }
       stage ('build'){
         steps {
             prodBuild()
