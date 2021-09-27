@@ -2,7 +2,7 @@
 pipeline {
   environment {
     PATH = "$PATH:/usr/local/bin/"
-    SHORT_COMMIT = env.GIT_COMMIT.take(7)
+    SHORT_COMMIT = "${GIT_COMMIT.take(7)}"
         
   }
   agent any 
