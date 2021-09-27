@@ -2,7 +2,7 @@
 pipeline {
   environment {
     PATH = "$PATH:/usr/local/bin/"
-    
+    SHORT_COMMIT = "${GIT_COMMIT[0..4]}"
         
   }
   agent any 
@@ -10,7 +10,11 @@ pipeline {
     maven 'maven'
   }
     stages {
-      
+      stage ('checkout'){
+        steps {
+          git branch: 'master', url: 'https://github.com/sivaramanshira/maven-project.git'
+        }
+      }
       stage ('sonar-scanner'){
         steps {
           sonarScan()
