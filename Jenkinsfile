@@ -2,7 +2,10 @@
 pipeline {
   environment {
     PATH = "$PATH:/usr/local/bin/"
-    SHORT_COMMIT = "${GIT_COMMIT[0..4]}"
+    SHORT_COMMIT = sh(
+                script: "printf \$(git rev-parse --short ${GIT_COMMIT})",
+                returnStdout: true
+        )
   }
   agent any 
   tools {
