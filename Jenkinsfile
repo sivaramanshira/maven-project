@@ -2,7 +2,7 @@
 pipeline {
   environment {
     PATH = "$PATH:/usr/local/bin/"
-    SHORT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD')
+    SHORT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD',length=4)
         
   }
   agent any 
